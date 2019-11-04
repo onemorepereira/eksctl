@@ -52,6 +52,7 @@ jobs:
     environment:
       BUILD_IMAGE: weaveworks/eksctl-build:33809a72f41297a01f023976c418ea6360e6800d
     steps:
+      - checkout
       - run: docker pull $BUILD_IMAGE
       - run:
           name: Run Integration Tests
@@ -98,7 +99,7 @@ workflows:
   scheduled-integration-tests:
     triggers:
       - schedule:
-          cron: "0 16 * * *"
+          cron: "26 17 * * *"
           filters:
             branches:
               only:
