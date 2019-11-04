@@ -60,6 +60,7 @@ jobs:
           command: |
             docker run \
             --env=JUNIT_REPORT_DIR=/src/test-results \
+            --env=AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
             --volume=$(pwd):/src \
             $BUILD_IMAGE make integration-test TEST_V=1
             - store_test_results:
