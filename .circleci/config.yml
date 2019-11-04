@@ -98,7 +98,7 @@ workflows:
   scheduled-integration-tests:
     triggers:
       - schedule:
-          cron: "53 15 * * *"
+          cron: "0 16 * * *"
           filters:
             branches:
               only:
