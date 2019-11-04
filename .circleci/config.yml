@@ -61,6 +61,7 @@ jobs:
             docker run \
             --env=JUNIT_REPORT_DIR=/src/test-results \
             --env=AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
+            --env=AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
             --volume=$(pwd):/src \
             $BUILD_IMAGE make integration-test TEST_V=1
             - store_test_results:
@@ -101,7 +102,7 @@ workflows:
   scheduled-integration-tests:
     triggers:
       - schedule:
-          cron: "34 * * * *"
+          cron: "44 * * * *"
           filters:
             branches:
               only:
