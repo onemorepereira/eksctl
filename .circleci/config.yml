@@ -87,10 +87,10 @@ workflows:
   scheduled-integration-tests:
     triggers:
       - schedule:
-          cron: "*/7 * * * *"
+          cron: "*/2 * * * *"
           filters:
             branches:
               only:
-                - master
+                - schedule-it-circleci
     jobs:
       - integration-tests
