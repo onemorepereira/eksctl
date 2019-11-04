@@ -54,6 +54,7 @@ jobs:
     steps:
       - checkout
       - run: docker pull $BUILD_IMAGE
+      - run: echo "this is an env variable $TEST_SECRET"
       - run:
           name: Run Integration Tests
           command: |
@@ -99,7 +100,7 @@ workflows:
   scheduled-integration-tests:
     triggers:
       - schedule:
-          cron: "53 * * * *"
+          cron: "20 * * * *"
           filters:
             branches:
               only:
