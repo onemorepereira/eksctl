@@ -1,0 +1,60 @@
+version: 0.2
+
+env:
+  variables:
+    FOOR: "BAR"
+  # parameter-store:
+    # LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
+
+phases:
+  install:
+    commands:
+      - echo Installing dependencies
+      - make install-build-deps
+    finally:
+      - echo This always runs even if the dependency installation fails
+  pre_build:
+    commands:
+      - echo Run some tests
+      - make test
+    finally:
+      - echo This always runs even if the tests fail
+  build:
+    commands:
+      - echo Entered the build phase...
+      - echo Build started on `date`
+      - make build
+    finally:
+      - echo This always runs even if the build fails
+  post_build:
+    commands:
+      - echo Entered the post_build phase...
+      - echo Build completed on `date`
+
+reports:
+  arn:aws:codebuild:us-west-2:349606758665:report-group/codebuild-1:
+    files:
+      - "**/*"
+    base-directory: 'target/tests/reports'
+    discard-paths: no
+  reportGroupCucumberJson:
+    files:
+      - 'cucumber/target/cucumber-tests.xml'
+    discard-paths: yes
+    file-format: CucumberJson # default is JunitXml
+artifacts:
+  files:
+    - target/messageUtil-1.0.jar
+  discard-paths: yes
+  secondary-artifacts:
+    artifact1:
+      files:
+        - target/messageUtil-1.0.jar
+      discard-paths: yes
+    artifact2:
+      files:
+        - target/messageUtil-1.0.jar
+      discard-paths: yes
+cache:
+  paths:
+    - '/root/.m2/**/*'
