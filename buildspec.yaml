@@ -3,6 +3,7 @@ version: 0.2
 env:
   variables:
     FOOR: "BAR"
+    GOBIN: ${CODEBUILD_SRC_DIR}/bin
   # parameter-store:
     # LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
 
