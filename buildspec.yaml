@@ -3,7 +3,7 @@ version: 0.2
 env:
   variables:
     FOOR: "BAR"
-    GOBIN: "${CODEBUILD_SRC_DIR}/bin"
+    GOPATH: $CODEBUILD_SRC_DIR/bin
   # parameter-store:
     # LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
 
@@ -12,7 +12,6 @@ phases:
     runtime-versions:
       golang: 1.13
     commands:
-      - echo "${GOBIN}"
       - echo "${GOPATH}"
       - echo Installing dependencies
       - make install-build-deps
