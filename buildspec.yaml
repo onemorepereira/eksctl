@@ -13,6 +13,7 @@ phases:
     commands:
       - printenv
       - echo Installing dependencies
+      - GOPATH=${FOO##/go:}
       - make install-build-deps
     finally:
       - echo This always runs even if the dependency installation fails
