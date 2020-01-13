@@ -12,10 +12,10 @@ phases:
     runtime-versions:
       golang: 1.13
     commands:
-      - printenv
       - echo Installing dependencies
       - GOPATH=${GOPATH##/go:}
       - make install-build-deps
+      - sudo apt install time
     finally:
       - echo This always runs even if the dependency installation fails
   pre_build:
