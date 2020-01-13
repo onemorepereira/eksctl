@@ -12,6 +12,7 @@ phases:
       golang: 1.13
     commands:
       - echo "${GOBIN}"
+      - echo "${GOPATH}"
       - echo Installing dependencies
       - make install-build-deps
     finally:
